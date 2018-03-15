@@ -1,33 +1,28 @@
-
+import java.util.Scanner;
 /**
  * Write a description of class SocialMediaTest here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zach, Christain, Chris, Darlin
+ * @version 3.15.18 socialPlatform getALife = new socialPlatform();
  */
 public class SocialMediaTest
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    static String choice;
+    static String post;
+    public static void main(){
+        Post p = new Post();
+        Scanner user = new Scanner(System.in);
+        p.setUp();
+        choice = user.nextLine();
+        if (choice.equalsIgnoreCase("add post")){
+            System.out.println("What do you want to tell the world?");
+            post = user.nextLine();
+            p.addPost(post);
+        }
+        else if (choice.equalsIgnoreCase("remove post")){
+            System.out.println("What post doesn't meet your expectations?");
+            post = user.nextLine();
+        }
 
-    /**
-     * Constructor for objects of class SocialMediaTest
-     */
-    public SocialMediaTest()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
     }
 }
