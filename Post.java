@@ -22,6 +22,7 @@ public class Post
                 //check if username is in the system
                 if (i.equals(name)){
                     System.out.println("Account Name: " + name);
+                    pass = !pass;
                 }
             }
         }
@@ -41,7 +42,7 @@ public class Post
 
     //quit
     public static void quit(){
-
+        System.out.println("*Cool closing animation*\nThanks for using Get A Life.");
     }
 
     public static void setUp(){
@@ -53,7 +54,7 @@ public class Post
         accounts.add("darlin");
         choices.add("add post");
         choices.add("remove post");
-        choices.add("switch account");
+        choices.add("switch user");
         choices.add("quit");
 
         System.out.print("*Awesome animation*\nWelcome to the app. Please enter your account name:  " );

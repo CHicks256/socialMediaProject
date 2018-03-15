@@ -23,6 +23,14 @@ public class SocialMediaTest
             System.out.println("What post doesn't meet your expectations?");
             post = user.nextLine();
         }
+        else if (choice.equalsIgnoreCase("switch user")){
+            System.out.print("Which account would you like to change to?");
+            choice = user.nextLine();
+            p.changeUser(choice);
+        }
+        else if (choice.equalsIgnoreCase("quit")){
+            p.quit();
+        }
 
     }
 }
