@@ -18,6 +18,7 @@ public class Post
     static String name = "";
     static int postID;
     static int loginAttempts = 0;
+    static boolean inSystem = false;
     //change user
     public static void changeUser(String n){
         int index = 0;
@@ -26,16 +27,17 @@ public class Post
         m.changeFileName(name);
         System.out.println(accounts);
         while (checking){
-            for (String i: accounts){
-                if (accounts.get(index).compareTo(name) == 0){
-                    System.out.println("Account Name: " + name);
-                    loginAttempts = 0;
-                    checking = false;
-                    break;
-                }
-                System.out.println("Checking: " + name.compareTo(accounts.get(index)));
-                index++;
+
+            if (accounts.get(index).compareTo(name) == 0){
+                System.out.println("Account Name: " + name);
+                loginAttempts = 0;
+                checking = false;
+                inSystem = true;
+                break;
             }
+            // System.out.println("Checking: " + name.compareTo(accounts.get(index)));
+            index++;
+
             loginAttempts++;
             if (loginAttempts == 3){
                 System.out.println("You have exceded the number of login attempts.");
