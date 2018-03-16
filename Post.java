@@ -24,25 +24,36 @@ public class Post
                     System.out.println("Account Name: " + name);
                     pass = !pass;
                 }
+                
             }
         }
     }
 
     //remove
     public static void removePost(int id){
-        int postID = id;
+        int postID = id; //sets post ID to be deleted by user
+        posts.remove(postID);
+        System.out.println("Your post has been removed."); //comfirmation that post has been deleted
     }
 
     //add
     public static void addPost(String p){
-        posts.add(p);
-        int postID = posts.size() - 1;
-        System.out.print(posts.get(postID));
+        posts.add(p); //adds user string input to application
+        int postID = posts.size() - 1; //sets id to most recent
+        System.out.print(posts.get(postID) + "                  Post ID: " + postID);//fancy print out
     }
-
+    
+    //refresh feed
+    public static void refresh(){
+        for (String i: posts){
+            int currentID = posts.indexOf(i);
+            System.out.println("Name: " + name + "          Post ID: " + currentID + "\n" + i);
+        }
+    }
+    
     //quit
     public static void quit(){
-        System.out.println("*Cool closing animation*\nThanks for using Get A Life.");
+        System.out.println("*Cool closing animation*\nThanks for using Get A Life.");//quit screen
     }
 
     public static void setUp(){
@@ -54,10 +65,11 @@ public class Post
         accounts.add("darlin");
         choices.add("add post");
         choices.add("remove post");
+        choices.add("refresh feed");
         choices.add("switch user");
         choices.add("quit");
 
-        System.out.print("*Awesome animation*\nWelcome to the app. Please enter your account name:  " );
+        System.out.print("*Awesome animation*\nWelcome to Get A Life.\nPlease enter your account name:  " );
         name = sc.getString();
         name = name.toLowerCase();
         p.changeUser(name);
