@@ -68,8 +68,8 @@ public class MemoryCard
 
         try {
             out.write(s);
-            out.newLine();
-            //out.write("|");
+            //out.newLine();
+            out.write("|");
         }
         catch (Exception e) {
             System.err.println("Cannot write file!");

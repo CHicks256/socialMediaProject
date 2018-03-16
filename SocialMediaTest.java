@@ -13,6 +13,8 @@ public class SocialMediaTest
     public static void main(){
         Post p = new Post();
         Scanner user = new Scanner(System.in);
+        ReadData d = new ReadData();
+        d.readData();
         p.setUp();
         while (inProgress){
             choice = user.nextLine();
