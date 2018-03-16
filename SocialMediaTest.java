@@ -14,23 +14,28 @@ public class SocialMediaTest
         Post p = new Post();
         Scanner user = new Scanner(System.in);
         ReadData d = new ReadData();
-        d.readData();
-        p.setUp();
+        p.setUp(); //sets up program
         while (inProgress){
             choice = user.nextLine();
             if (choice.equalsIgnoreCase("add post")){
+                System.out.println("---Posting---");
                 System.out.println("What do you want to tell the world?");
                 post = user.nextLine();
                 p.addPost(post);
             }
             else if (choice.equalsIgnoreCase("remove post")){
+                System.out.println("---Deleting---");
                 System.out.println("What post doesn't meet your expectations?");
-                post = user.nextLine();
+                int index = user.nextInt();
+                p.removePost(index);
             }
+
             else if (choice.equalsIgnoreCase("refresh feed")){
+                System.out.println("---Feed---");
                 p.refresh();
             }
             else if (choice.equalsIgnoreCase("switch user")){
+                System.out.println("---Change User---");
                 System.out.print("Which account would you like to change to?");
                 choice = user.nextLine();
                 p.changeUser(choice);

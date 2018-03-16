@@ -9,21 +9,42 @@ import java.util.ArrayList;
 public class Post
 {
     static ArrayList<String>choices = new ArrayList<String>(); //holds choices, shortens code
-    static ArrayList<Object>accounts = new ArrayList<Object>(); //holds accounts, ease of use
+    static ArrayList<String>accounts = new ArrayList<String>(); //holds accounts, ease of use
     static ArrayList<String>posts = new ArrayList<String>(); //holds posts
     static scanner sc = new scanner();
+    static Post p = new Post();
     static MemoryCard m = new MemoryCard();
-    static String name;
+    static ReadData r = new ReadData();
+    static String name = "";
     static int postID;
+    static int loginAttempts = 0;
     //change user
     public static void changeUser(String n){
+        int index = 0;
+        boolean checking = true;
         name = n;
-        m.writeString("Account name: "+ name);
-
-        for (Object i: accounts){
-            if (i.equals(name)){
-                System.out.println("Account Name: " + name);
+        m.changeFileName(name);
+        System.out.println(accounts);
+        while (checking){
+            for (String i: accounts){
+                if (accounts.get(index).compareTo(name) == 0){
+                    System.out.println("Account Name: " + name);
+                    loginAttempts = 0;
+                    checking = false;
+                    break;
+                }
+                System.out.println("Checking: " + name.compareTo(accounts.get(index)));
+                index++;
             }
+            loginAttempts++;
+            if (loginAttempts == 3){
+                System.out.println("You have exceded the number of login attempts.");
+                System.exit(0);
+            }
+            else{
+                System.out.println("There is no user with the account name " + name + " please try again.");
+            }
+            checking = false;
         }
     }
 
@@ -31,35 +52,35 @@ public class Post
     public static void removePost(int id){
         postID = id; //sets post ID to be deleted by user
         posts.remove(postID - 1);
+        System.out.println(posts);
         System.out.println("Your post has been removed."); //comfirmation that post has been deleted
     }
 
     //add
     public static void addPost(String p){
         posts.add(p); //adds user string input to application
-        m.writeString(p);
+        m.writeString(p); //writes post to text file
         postID = posts.size() - 1; //sets id to most recent
-        System.out.print(posts.get(postID) + "                  Post ID: " + postID + 1);//fancy print out
-    }
+        System.out.print(posts.get(postID) + "                  Post ID: " + (postID + 1));//fancy print out
+    } 
 
     //refresh feed
     public static void refresh(){
         for (String i: posts){
             int currentID = posts.indexOf(i) + 1;
             System.out.println("Name: " + name + "          Post ID: " + currentID + "\n" + i);
-        }
+        } 
     }
 
     //quit
     public static void quit(){
-        m.writeString(String.valueOf(postID));
-        m.saveAndClose();
-        System.out.println("*Cool closing animation*\nThanks for using Get A Life.");//quit screen
+        m.saveAndClose(); //saves text file
+        System.out.println("*Cool closing animation*\nThanks for using Get A Life."); //quit screen
+        System.exit(0); 
     }
 
     //sets up platform
     public static void setUp(){
-        Post p = new Post();
         //sets up all arraylists
         accounts.add("zach");
         accounts.add("chistian");
@@ -70,23 +91,17 @@ public class Post
         choices.add("refresh feed");
         choices.add("switch user");
         choices.add("quit");
-        //reading data file
-        System.out.println("Reading System Data: Please Wait");
-        ReadData.readData();
-        if (ReadData.isEmpty()){
-            name = ReadData.getName();
-            System.out.println("Account Found: " + name);
-        }
-        else{
-            name = "";
-            System.out.print("*Awesome animation*\nWelcome to Get A Life.\nPlease enter your account name:  " );
-        }
-        while (name.equals("")){
+
+        System.out.println("Welcome to Get A Life");
+        while (name.equals("") || loginAttempts != 0){
+            System.out.print("Enter a username: ");
             name = sc.getString();
             name = name.toLowerCase();
+            m.changeFileName(name);
             p.changeUser(name);
         }
         System.out.print("Welcome back " + name + ", would you like to:\n");
+
         for (String i: choices){
             System.out.println(i.substring(0,1).toUpperCase() + i.substring(1));
         }

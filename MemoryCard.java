@@ -10,7 +10,7 @@ import java.io.BufferedWriter;
  */
 public class MemoryCard
 {
-    private static final String DATA_FILE = "Users.txt";
+    private static String DATA_FILE = "Users.txt";
 
     private static Scanner in;
     private static BufferedWriter out;
@@ -21,6 +21,11 @@ public class MemoryCard
      * 
      * @return a line of text from the input file
      */
+    
+    public static void changeFileName(String n){
+        DATA_FILE = n + ".txt";
+    }
+    
     public static String readString() {
         if (in == null) {
             try {
