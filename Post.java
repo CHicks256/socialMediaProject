@@ -28,7 +28,7 @@ public class Post
         System.out.println(accounts);
         while (checking){
 
-            if (accounts.get(index).compareTo(name) == 0){
+            if (name.equals(accounts.get(0))||name.equals(accounts.get(1))||name.equals(accounts.get(2))||name.equals(accounts.get(3))){
                 System.out.println("Account Name: " + name);
                 loginAttempts = 0;
                 checking = false;
@@ -85,7 +85,7 @@ public class Post
     public static void setUp(){
         //sets up all arraylists
         accounts.add("zach");
-        accounts.add("chistian");
+        accounts.add("christian");
         accounts.add("chris");
         accounts.add("darlin");
         choices.add("add post");
