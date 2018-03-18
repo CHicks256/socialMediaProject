@@ -33,6 +33,8 @@ public class Post
                 loginAttempts = 0;
                 checking = false;
                 inSystem = true;
+                System.out.print("Welcome back " + name + ", would you like to:\n");
+                options();
                 break;
             }
             // System.out.println("Checking: " + name.compareTo(accounts.get(index)));
@@ -56,6 +58,7 @@ public class Post
         posts.remove(postID - 1);
         System.out.println(posts);
         System.out.println("Your post has been removed."); //comfirmation that post has been deleted
+        options();
     }
 
     //add
@@ -64,6 +67,8 @@ public class Post
         m.writeString(p); //writes post to text file
         postID = posts.size() - 1; //sets id to most recent
         System.out.print(posts.get(postID) + "                  Post ID: " + (postID + 1));//fancy print out
+        System.out.println(" ");
+        options();
     } 
 
     //refresh feed
@@ -72,6 +77,7 @@ public class Post
             int currentID = posts.indexOf(i) + 1;
             System.out.println("Name: " + name + "          Post ID: " + currentID + "\n" + i);
         } 
+        options();
     }
 
     //quit
@@ -80,7 +86,13 @@ public class Post
         System.out.println("*Cool closing animation*\nThanks for using Get A Life."); //quit screen
         System.exit(0); 
     }
-
+    //options
+    public static void options(){
+        System.out.println("\n----Options----");
+        for (String i: choices){
+                    System.out.println(i.substring(0,1).toUpperCase() + i.substring(1));
+               }
+    }
     //sets up platform
     public static void setUp(){
         //sets up all arraylists
@@ -101,11 +113,6 @@ public class Post
             name = name.toLowerCase();
             m.changeFileName(name);
             p.changeUser(name);
-        }
-        System.out.print("Welcome back " + name + ", would you like to:\n");
-
-        for (String i: choices){
-            System.out.println(i.substring(0,1).toUpperCase() + i.substring(1));
         }
     }
 }
