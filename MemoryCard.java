@@ -5,8 +5,8 @@ import java.io.BufferedWriter;
 /**
  * Write a description of class MemoryCard here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Zach, Christian, Chris, Darlin
+ * @version 3.19.18 Reinventing the memory card
  */
 public class MemoryCard
 {

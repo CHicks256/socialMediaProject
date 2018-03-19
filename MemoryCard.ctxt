@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=MemoryCard
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MemoryCard\ here.\r\n\r\n\ @author\ Zach,\ Christian,\ Chris,\ Darlin\r\n\ @version\ 3.19.18\ Reinventing\ the\ memory\ card\r\n
+comment1.params=n
+comment1.target=void\ changeFileName(java.lang.String)
+comment1.text=\r\n\ Opens\ a\ file\ to\ be\ used\ for\ input\ (if\ not\ already\ open),\r\n\ reads\ a\ line\ from\ the\ file,\ and\ returns\ the\ entire\ line\ of\ data.\r\n\ \r\n\ @return\ a\ line\ of\ text\ from\ the\ input\ file\r\n
+comment2.params=
+comment2.target=java.lang.String\ readString()
+comment3.params=s
+comment3.target=void\ writeString(java.lang.String)
+comment3.text=\r\n\ Opens\ a\ file\ to\ be\ used\ for\ output\ (if\ not\ already\ open),\r\n\ writes\ a\ string\ to\ the\ file\ and\ wrties\ a\ newline.\r\n\ \r\n\ @param\ s\ The\ string\ text\ to\ be\ written.\ Follwing\ the\ string,\ a\ newline\ is\ added\ to\ the\ file.\r\n
+comment4.params=
+comment4.target=void\ saveAndClose()
+comment4.text=\r\n\ Saves\ and\ closes\ the\ file\ (when\ opened\ for\ either\ input\ or\ output).\ \r\n\ \r\n\ Note\:\ If\ the\ program\ terminates\ before\ the\ file\ is\ closed,\r\n\ no\ data\ will\ be\ saved\ or\ written\ to\ the\ file.\r\n
+numComments=5

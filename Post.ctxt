@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Post
+comment0.text=\r\n\ add\ posts,\ delete\ posts,\ switch\ accounts,\ and\ quit\ app.\r\n\r\n\ @author\ Zach,\ Christian,\ Chris,\ Darlin\r\n\ @version\ 3.19.18\ Meat\ and\ Potatoes\r\n
+comment1.params=n
+comment1.target=void\ changeUser(java.lang.String)
+comment1.text=\r\n\ Changes\ user\ to\ user\ input\ if\ in\ the\ system.\ Each\ player\ has\ file\ that\ corresponds\ to\ their\ name.\ \r\n\ If\ no\ file\ is\ found\ then\ an\ error\ will\ be\ thrown\ saying\ that\ there\ is\ no\ file\ by\ that\ name,\ this\ is\ ok\ as\ the\ program\ will\ still\ run.\r\n
+comment2.params=id
+comment2.target=void\ removePost(int)
+comment2.text=\r\n\ Removes\ post\ with\ a\ specific\ id.\ Id\ is\ subtracted\ by\ one\ to\ match\ up\ with\ array\ indexing.\r\n
+comment3.params=p
+comment3.target=void\ addPost(java.lang.String)
+comment3.text=\r\n\ Adds\ post\ to\ posts\ ArrayList.\r\n
+comment4.params=
+comment4.target=void\ refresh()
+comment5.params=
+comment5.target=void\ quit()
+comment6.params=
+comment6.target=void\ options()
+comment7.params=
+comment7.target=void\ setUp()
+numComments=8
