@@ -10,10 +10,11 @@ public class ReadData
     static Post p = new Post();
     static String dataString = null;
     static String currentPost = "";
+    /**
+     * Reads user's data if any.
+     */
     public static void readData(){
-        /**
-         * Implement code to check if data is being read. hint: boolean variable in Post class
-         */
+        p.readingData = true;
         dataString = MemoryCard.readString(); //gets string value in file
         while (dataString != null)
         {
@@ -25,8 +26,6 @@ public class ReadData
                 break;
             }
         }
-        /**
-         * Impletment code to say that the data is not being read anymore.
-         */
+        p.readingData = false;
     }
 }

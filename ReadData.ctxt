@@ -3,4 +3,5 @@ comment0.target=ReadData
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ ReadData\ here.\r\n\r\n\ @author\ Zach,\ Christian,\ Chris,\ Darlin\r\n\ @version\ 3.19.18\ Reinventing\ the\ memory\ card\r\n
 comment1.params=
 comment1.target=void\ readData()
+comment1.text=\r\n\ Reads\ user's\ data\ if\ any.\r\n
 numComments=2
