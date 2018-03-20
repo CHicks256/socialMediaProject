@@ -1,5 +1,8 @@
+import java.util.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 /**
  * add posts, delete posts, switch accounts, and quit app.
  *
@@ -11,11 +14,15 @@ public class Post
     static ArrayList<String>choices = new ArrayList<String>(); //holds choices, shortens code
     static ArrayList<String>accounts = new ArrayList<String>(); //holds accounts, ease of use
     static ArrayList<String>posts = new ArrayList<String>(); //holds posts
+    static ArrayList<String>dates = new ArrayList<String>(); //Tracks dates in which posts have been posted
     static Scanner sc = new Scanner(System.in); //user input
     //object delcaration
     static Post p = new Post();
     static MemoryCard m = new MemoryCard();
     static ReadData r = new ReadData();
+    static DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US);
+    static Calendar todaysDate = Calendar.getInstance();
+    static String today = dateFormat.format(todaysDate.getTime());
     //variables
     static String name = ""; //sets name to blank string
     static int postID; //holds post's Id
@@ -34,7 +41,7 @@ public class Post
         m.changeFileName(name);//changes file name to username
         //System.out.println(accounts); //Debug Code
         while (checking){
-            if (name.equals(accounts.get(0))||name.equals(accounts.get(1))||name.equals(accounts.get(2))||name.equals(accounts.get(3))){
+            if (name.equals(accounts.get(0)) || name.equals(accounts.get(1)) || name.equals(accounts.get(2)) || name.equals(accounts.get(3))){
                 System.out.println("Account Name: " + name);
                 loginAttempts = 0;
                 checking = false;
@@ -61,24 +68,30 @@ public class Post
     public static void removePost(int id){
         postID = id; //sets post ID to be deleted by user
         posts.remove(postID - 1);
-        //System.out.println(posts); //debug code
         System.out.println("Your post has been removed."); //comfirmation that post has been deleted
     }
+
+    /**public static void setDate(){
+    cal = Calendar.getInstance();
+    date = cal.getTime();
+    }**/
 
     /**
      * Adds post to posts ArrayList.
      */
     public static void addPost(String p){
         if(!readingData){
-            if (posts.size() == 0 || !posts.get(posts.size() - 1).equalsIgnoreCase(p) && !posts.get(posts.size() - 2).equalsIgnoreCase(p)){
+            if (posts.size() == 0 || !posts.get(posts.size() - 1).equalsIgnoreCase(p) || !posts.get(posts.size() - 2).equalsIgnoreCase(p)){
                 posts.add(p); //adds user string input to application
+                Calendar todaysDate = Calendar.getInstance();
+                String today = dateFormat.format(todaysDate.getTime());
+                dates.add(today);
                 System.out.println("Your post has been added successfully!"); //displays every time a post is added
                 spamCount = 0;
             }
             else{
                 System.out.println("Your post has not been added. You have already made that post within your last two posts. It's not cool to spam people.");
                 spamCount++;
-                
                 if (spamCount == 3){
                     System.out.println("Didn't I tell you that it is not nice to spam!? Let's see how you like getting spammed!");
                     for (int x = 0; x <= name.length(); x++){
@@ -88,6 +101,9 @@ public class Post
                     System.exit(0);
                 }
             }
+        }
+        else{
+            posts.add(p);
         }
     } 
 
@@ -102,7 +118,7 @@ public class Post
         else{
             for (String i: posts){
                 int currentID = posts.indexOf(i) + 1;
-                System.out.println("Name: " + name + "          Post ID: " + currentID + "\n" + i );
+                System.out.println("Name: " + name + "          Post ID: " + currentID + "\n" + i + "\nPosted on " + dates.get(posts.indexOf(i)));
                 //System.out.println("ID: " + (currentID) + " Posts Size: " + posts.size()); //Debug code
                 if (currentID != posts.size()){
                     System.out.println("-----------------");
@@ -117,7 +133,7 @@ public class Post
     public static void quit(){
         for (String i: posts){
             if(r.dataString == null || !r.dataString.contains(i)){
-                m.writeString(i);
+                m.writeString(i + "~" + dates.get(posts.indexOf(i)));
             }
         }
         m.saveAndClose(); //saves text file

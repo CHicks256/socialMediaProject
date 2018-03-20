@@ -1,4 +1,6 @@
-
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 /**
  * Write a description of class ReadData here.
  *
@@ -18,8 +20,13 @@ public class ReadData
         dataString = MemoryCard.readString(); //gets string value in file
         while (dataString != null)
         {
-            currentPost = dataString.substring(0, dataString.indexOf("|"));//get all characters in a single post
+            System.out.println(dataString);
+            String temp = dataString.substring(0, dataString.indexOf("|"));
+            //date = substring ~ + 1 to |
+            currentPost = temp.substring(0, temp.indexOf("~"));//get all characters in a single post
+            temp = temp.substring(temp.indexOf("~") + 1);
             p.addPost(currentPost); //adds post to the posts array
+            p.dates.add(temp);
             dataString = dataString.substring(dataString.indexOf("|") + 1); //updates the dataString (no infinite loop)
             if (dataString.length() == 0){
                 System.out.println(dataString);

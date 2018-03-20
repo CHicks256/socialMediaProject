@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Write a description of class SocialMediaTest here.
  *
  * @author Zach, Christain, Chris, Darlin
- * @version 3.19.18 Home Stretch
+ * @version 3.19.18 What am I even doing anymore?
  */
 public class SocialMediaTest
 {
@@ -15,9 +15,10 @@ public class SocialMediaTest
     static Post p = new Post();
     static Scanner user = new Scanner(System.in);
     static ReadData d = new ReadData();
+    static MemoryCard m = new MemoryCard();
 
     /**
-     * Adds items to ArrayLists.
+     * Adds items to ArrayLists. 
      */
     public static void addItems(){
         //sets up all arraylists
@@ -65,9 +66,17 @@ public class SocialMediaTest
                 System.out.println("Which account would you like to change to? Type 'Cancel' to go back to menu.");
                 choice = user.nextLine();
                 if (!choice.equalsIgnoreCase("Cancel")){
+                    for (String i: p.posts){
+                        if(d.dataString == null || !d.dataString.contains(i)){
+                            m.writeString(i + "~" + p.dates.get(p.posts.indexOf(i)));
+                        }
+                    }
+                    m.saveAndClose(); //saves text file
                     p.changeUser(choice);
                     p.posts = new ArrayList<String>();
+                    p.dates = new ArrayList<String>();
                     p.setUp(); //re-sets up application for switched user
+                    d.readData();
                 }
             }
             else if (choice.equalsIgnoreCase("quit")){

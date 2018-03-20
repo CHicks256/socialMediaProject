@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=SocialMediaTest
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SocialMediaTest\ here.\r\n\r\n\ @author\ Zach,\ Christain,\ Chris,\ Darlin\r\n\ @version\ 3.19.18\ Home\ Stretch\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SocialMediaTest\ here.\r\n\r\n\ @author\ Zach,\ Christain,\ Chris,\ Darlin\r\n\ @version\ 3.19.18\ What\ am\ I\ even\ doing\ anymore?\r\n
 comment1.params=
 comment1.target=void\ addItems()
-comment1.text=\r\n\ Adds\ items\ to\ ArrayLists.\r\n
+comment1.text=\r\n\ Adds\ items\ to\ ArrayLists.\ \r\n
 comment2.params=
 comment2.target=void\ menu()
 comment2.text=\r\n\ Controls\ user\ options.\r\n
